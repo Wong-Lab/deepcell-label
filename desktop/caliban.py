@@ -184,7 +184,9 @@ class CalibanWindow:
         self.hide_annotations = False
 
         # set cmap for labels here (easier to set_bad just once)
-        self.labels_cmap = plt.get_cmap("viridis")
+        vals = np.linspace(0,1,256)
+        np.random.shuffle(vals)
+        self.labels_cmap = plt.cm.colors.ListedColormap(plt.cm.viridis(vals))
         self.labels_cmap.set_bad('black')
 
         # composite_view used to store RGB image (composite of raw and annotated) so it can be
