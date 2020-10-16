@@ -3019,7 +3019,7 @@ class TrackReview(CalibanWindow):
         	del self.tracks[track]
 
         try:
-            with tarfile.open(self.filename + ".trk", "w") as trks:
+            with tarfile.open(self.filename + ".trk", "w:gz") as trks:
                 with tempfile.NamedTemporaryFile("w") as lineage_file:
                     json.dump(self.tracks, lineage_file, indent=1)
                     lineage_file.flush()
@@ -4931,7 +4931,7 @@ class ZStackReview(CalibanWindow):
         trk_ann[:,:,:,0] = self.annotated[:,:,:,self.feature]
 
         try:
-            with tarfile.open(filename + ".trk", "w") as trks:
+            with tarfile.open(filename + ".trk", "w:gz") as trks:
                 with tempfile.NamedTemporaryFile("w") as lineage_file:
                     json.dump(self.lineage, lineage_file, indent=1)
                     lineage_file.flush()
