@@ -79,7 +79,7 @@ run_vnc_server() {
         log_w "The VNC server will NOT ask for a password"
     fi
 
-    x11vnc -display ${DISPLAY} -forever ${passwordArgument} &
+    x11vnc -display ${DISPLAY} -shared -forever ${passwordArgument} &
     wait $!
 }
 
