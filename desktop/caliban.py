@@ -1943,7 +1943,7 @@ class TrackReview(CalibanWindow):
         self.raw = raw
         self.tracked = tracked
 
-        self.invalid_tracks = []
+        self.invalid_tracks = {}
 
         # if not all of these keys are present, actions are not supported
         for label, track in self.tracks.items():
