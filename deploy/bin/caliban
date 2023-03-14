@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+if ! command -v poetry &> /dev/null
+then
+    echo "Info: poetry could not be found! Installing a copy for you"
+    echo
+    curl -sSL https://install.python-poetry.org | python3 -
+    echo "export PATH=\"$HOME/.local/bin:\$PATH\"" >> ~/.profile
+    . $HOME/.profile
+fi
+
+CALIBAN_DIR=$HOME/.caliban
+
+if ! poetry -C $CALIBAN_DIR env info -p &> /dev/null
+then
+    poetry -C $CALIBAN_DIR install
+fi
+
+poetry -C $CALIBAN_DIR run python3 $CALIBAN_DIR/caliban.py "$@"
+
